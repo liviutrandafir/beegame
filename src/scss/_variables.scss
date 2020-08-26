@@ -1,3 +1,19 @@
+// Media queries breakpoints
+// -------------------------
+// Breakpoints are defined as a map of (name: minimum width), order from small to large
+$grid-breakpoints: (
+  //xs: 0,					// PHONE PORTRAIT		0	- 543
+  //sm: em(544px, 16px),	// PHONE LANDSCAPE		544	- 767
+  //md: em(768px, 16px),	// TABLET PORTRAIT		768	- 991
+  //lg: em(992px, 16px),	// TABLET LANDSCAPE		992	- 1199
+  //xl: em(1200px, 16px),	// DESKTOP				1200 ~
+        xs: 0, // PHONE PORTRAIT		0	- 543
+        sm: 544px, // PHONE LANDSCAPE		544	- 767
+        md: 768px, // TABLET PORTRAIT		768	- 991
+        lg: 992px, // TABLET LANDSCAPE		992	- 1199
+        xl: 1200px // DESKTOP				1200 ~
+);
+
 // Colors
 $c-white: #ffffff;
 $c-brown: #984A21;

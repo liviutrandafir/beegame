@@ -10,6 +10,7 @@ const dronesNr = document.getElementById('drones-number');
 const workerPercentage = document.getElementById('workers-percentage');
 const dronesPercentage = document.getElementById('drones-percentage');
 const queenPercentage = document.getElementById('queen-percentage');
+const beesTable = document.getElementById('bees-table');
 
 // Default swarm values
 let swarm = [
@@ -163,8 +164,11 @@ let resetGame = () => {
     ];
     workerBees = swarm.filter(bee => bee.type === 'worker');
     droneBees = swarm.filter(bee => bee.type === 'drone');
-    displayInfo();
+    updateInfo();
 }
+
+let workerInitalLength = workerBees.length;
+let droneInitalLength = droneBees.length;
 
 // Calculate and update life percentage of each bee type
 let updatePercentage = (type, domElem, initialLength, lifePoints) => {
@@ -186,6 +190,7 @@ let damage = () => {
         // If the affected bee is the queen
         if (damagedBee.type === 'queen') {
             damagedBee.hp -= 8;
+            // Add shake effect on click
             queenElement.classList.add('shake-element');
             setTimeout(function() {
                 queenElement.classList.remove('shake-element');
@@ -198,6 +203,7 @@ let damage = () => {
         // If the affected bee is a worker
         else if (damagedBee.type === 'worker') {
             damagedBee.hp -= 10;
+            // Add shake effect on click
             workersElement.classList.add('shake-element');
             setTimeout(function() {
                 workersElement.classList.remove('shake-element');
@@ -210,6 +216,7 @@ let damage = () => {
         // If the affected bee is a drone
         else if (damagedBee.type === 'drone') {
             damagedBee.hp -= 12;
+            // Add shake effect on click
             dronesElement.classList.add('shake-element');
             setTimeout(function() {
                 dronesElement.classList.remove('shake-element');
@@ -225,23 +232,18 @@ let damage = () => {
     }
 }
 
-let displayInfo = () => {
-    workersNr.innerText = workerBees.length;
-    dronesNr.innerText = droneBees.length;
+let updateInfo = () => {
+    workersNr.innerText = workerBees.length + ' Bees';
+    dronesNr.innerText = droneBees.length + ' Bees';
+    updatePercentage(workerBees, workerPercentage, workerInitalLength, 75);
+    updatePercentage(droneBees, dronesPercentage, droneInitalLength, 50);
     queenPercentage.innerText = swarm[0].hp + '%';
 }
 
-let workerInitalLength = workerBees.length;
-let droneInitalLength = droneBees.length;
-updatePercentage(workerBees, workerPercentage, workerInitalLength, 75);
-updatePercentage(droneBees, dronesPercentage, droneInitalLength, 50);
-displayInfo();
+updateInfo();
 
 // When we click the "Hit" button
 startButton.onclick = () => {
     damage();
-    updatePercentage(workerBees, workerPercentage, workerInitalLength, 75);
-    updatePercentage(droneBees, dronesPercentage, droneInitalLength, 50);
-    queenPercentage.innerText = swarm[0].hp + '%';
-    displayInfo();
+    updateInfo();
 }

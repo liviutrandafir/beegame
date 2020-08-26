@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 body {
   background: url('../../src/images/bg.png') no-repeat;
@@ -10,69 +11,130 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-}
 
-.button-section {
-  text-align: center;
-  padding: 60px 0;
+  .button-section {
+    text-align: center;
+    padding: 60px 0;
 
-  .start-button {
-    margin-top: 20px;
-    background: $c-yellow;
-    color: $c-brown;
-    padding: 7px 15px;
-    border: 2px solid $c-brown;
-    border-radius: 10px;
-    display: inline-block;
-    font-size: 30px;
-    min-width: 250px;
-  }
-}
-
-.bees-inlay {
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 120px;
-}
-
-.bee-element {
-  max-width: 200px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-
-  &__health {
-    background: $c-white;
-    color: $c-brown;
-    padding: 7px 15px;
-    border: 2px solid $c-brown;
-    border-radius: 12px;
-    margin-bottom: 20px;
+    .start-button {
+      margin-top: 20px;
+      background: $c-yellow;
+      color: $c-brown;
+      padding: 7px 15px;
+      border: 2px solid $c-brown;
+      border-radius: 10px;
+      display: inline-block;
+      font-size: 30px;
+      min-width: 250px;
+    }
   }
 
-  &__type {
-    margin-top: 20px;
-    background: $c-yellow;
-    color: $c-brown;
-    padding: 7px 15px;
-    border: 2px solid $c-brown;
-    border-radius: 12px;
-    display: inline-block;
-  }
+  .bees-inlay {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 120px;
 
-  &__number {
-    margin-top: 10px;
-    background: $c-white;
-    color: $c-brown;
-    padding: 7px 15px;
-    border: 2px solid $c-brown;
-    border-radius: 12px;
-  }
+    .bee-element {
+      max-width: 200px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
 
-  img {
-    max-width: 100%;
+      @include media-breakpoint-down(sm){
+        max-width: 25%;
+      }
+
+      &#workers-element {
+        .bee-element__image {
+          transform: rotate(-10deg);
+        }
+      }
+
+      &#queen-element {
+        .bee-element__image {
+          transform: rotate(5deg);
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            background-image: url('../../src/images/crown.png');
+            background-size: cover;
+            width: 70px;
+            height: 43px;
+            top: 42px;
+            right: 8px;
+            transform: rotate(22deg);
+
+            @include media-breakpoint-down(sm){
+              width: 40px;
+              height: 28px;
+              top: 27px;
+              right: 8px;
+            }
+
+            @include media-breakpoint-down(xs){
+              width: 28px;
+              height: 19px;
+              top: 15px;
+              right: 0px;
+            }
+          }
+        }
+      }
+
+      &#drones-element {
+        .bee-element__image {
+          transform: rotate(-5deg);
+        }
+      }
+
+      &__health {
+        background: $c-white;
+        color: $c-brown;
+        padding: 7px 15px;
+        border: 2px solid $c-brown;
+        border-radius: 12px;
+        margin-bottom: 20px;
+
+        @include media-breakpoint-down(sm){
+          font-size: 14px;
+        }
+      }
+
+      &__type {
+        margin-top: 20px;
+        background: $c-yellow;
+        color: $c-brown;
+        padding: 7px 15px;
+        border: 2px solid $c-brown;
+        border-radius: 12px;
+        display: inline-block;
+
+        @include media-breakpoint-down(sm){
+          font-size: 14px;
+        }
+      }
+
+      &__number {
+        margin-top: 10px;
+        background: $c-white;
+        color: $c-brown;
+        padding: 7px 15px;
+        border: 2px solid $c-brown;
+        border-radius: 12px;
+
+        @include media-breakpoint-down(sm){
+          font-size: 10px;
+        }
+      }
+
+      img {
+        max-width: 100%;
+      }
+    }
   }
 }
 

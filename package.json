@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "npx webpack --config webpack.config.prod.js"
+    "build": "npx webpack"
   },
   "author": "Liviu Trandafir",
   "license": "ISC",

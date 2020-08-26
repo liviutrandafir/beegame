@@ -1,4 +1,4 @@
-# BeeGame
+# beegame
 
 To get the project up and running: 
 
@@ -6,3 +6,5 @@ To get the project up and running:
 #### 2. ```cd beegame```
 #### 3. ```npm install```
 #### 4. ```npm run start```
+
+[Link to DEMO](https://liviutrandafir.github.io/beegame/dist)
